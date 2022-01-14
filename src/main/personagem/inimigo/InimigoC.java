@@ -1,35 +1,38 @@
 package main.personagem.inimigo;
 
 import main.personagem.personagens.Personagem;
-import main.personagem.personagens.PersonagemObserver;
 
-public class InimigoConcreto implements Inimigo{
-    private Personagem personagem;
+import java.util.Observable;
+import java.util.Observer;
+
+public class InimigoC implements Observer {
+
     private String nome;
+    private Integer life;
 
     private int x;
     private int y;
 
 
-    public InimigoConcreto(Personagem p,String nome,int x,int y) {
-        this.personagem = p;
-        this.personagem.adicionarObservador(this);
+    public InimigoC(String nome, int x, int y) {
         this.nome=nome;
         this.x=x;
         this.y=y;
+        this.life=100;
     }
 
-    public void atualizar(PersonagemObserver s) {
-        Personagem personagem= (Personagem) s;
+    @Override
+    public void update(Observable observable, Object o) {
+        Personagem personagem= (Personagem) observable;
         if(((this.x- personagem.getX())==0)&&((this.y- personagem.getY())==0)){
             personagem.dano(5);
             System.out.println("chegou "+nome);
         }else{
-            if(personagem.getX()>this.x)this.x=this.x+1;
-            else this.x=this.x-1;
+            if(personagem.getX()>this.x)this.x++;
+            else if(personagem.getX()<this.x)this.x--;
 
-            if (personagem.getY() > this.y) this.y = this.y+1;
-            else this.y = this.y-1;
+            if (personagem.getY() > this.y) this.y++;
+            else if (personagem.getY() < this.y) this.y--;
             System.out.println(nome+" {"+x+","+y+"}");
         }
     }
@@ -57,5 +60,13 @@ public class InimigoConcreto implements Inimigo{
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public Integer getLife() {
+        return life;
+    }
+
+    public void setLife(Integer life) {
+        this.life = life;
     }
 }

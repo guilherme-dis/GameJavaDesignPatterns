@@ -1,6 +1,5 @@
 package main.personagem.personagens;
 
-import main.personagem.inimigo.Inimigo;
 import main.personagem.interfaces.Atacar;
 import main.personagem.interfaces.Correr;
 import main.personagem.interfaces.Pular;
@@ -8,43 +7,25 @@ import main.state.Normal;
 import main.state.State;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
-public abstract class Personagem implements PersonagemObserver{
+public abstract class Personagem extends Observable {
     private State state;
     private Integer life;
 
     private int x;
     private int y;
 
-    private Boolean alertaSonoro = false;
-    private final ArrayList observadores=new ArrayList();
 
-    public void alterarAlerta() {
-        alertaSonoro = !alertaSonoro;
-        notificarObservadores();
-    }
-    public Boolean getAlerta() {
-        return alertaSonoro;
-    }
 
-    public void adicionarObservador(Inimigo o) {
-        observadores.add(o);
-    }
 
-    public void removerObservador(Inimigo o) {
-        observadores.remove(o);
-    }
 
-    private void notificarObservadores() {
-        for (Object observadore : observadores) {
-            Inimigo o = (Inimigo) observadore;
-            o.atualizar(this);
-        }
-    }
+
     public void andar(int x,int y){
         this.x+=x;
         this.y+=y;
-        notificarObservadores();
+        setChanged();
+        notifyObservers();
     }
 
 
@@ -53,7 +34,11 @@ public abstract class Personagem implements PersonagemObserver{
 
 
 
-
+    public void show(){
+        System.out.println("("+x+","+y+")");
+        setChanged();
+        notifyObservers();
+    }
 
 
     private Atacar atacar;

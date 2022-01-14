@@ -11,6 +11,8 @@ public class Morto extends State {
         getPersonagem().setAtacar(new Atacar_0());
         getPersonagem().setPular(new Pular_0());
         getPersonagem().setCorrer(new Correr_0());
+        System.out.println("morreu");
+        System.exit(0);
     }
 
     @Override
