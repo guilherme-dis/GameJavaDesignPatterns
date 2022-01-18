@@ -1,9 +1,9 @@
 package main.personagem.personagens;
 
 
-import main.personagem.classesimplement.AtacarMedio;
-import main.personagem.classesimplement.CorrerRapido;
-import main.personagem.classesimplement.PularAlto;
+import main.personagem.personagens.classesimplement.AtacarMedio;
+import main.personagem.personagens.classesimplement.CorrerRapido;
+import main.personagem.personagens.classesimplement.PularAlto;
 
 public class Personagem2 extends Personagem {
     public Personagem2(int x,int y){

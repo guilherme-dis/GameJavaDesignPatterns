@@ -1,22 +1,39 @@
 package main;
 
 
-import main.personagem.personagens.Personagem;
-import main.personagem.personagens.Personagem1;
+import main.personagem.handler.Escudos;
+import main.personagem.handler.concretehandler.*;
 
 
 public class App {
     public static void main(String[] args) throws InterruptedException {
-        View g = new View();
-        g.jogar(g);
 
+
+
+//        View g = new View();
+//        g.jogar(g);
+//
+//
+//        //instanciar objetos da cadeia
+//        Saque saque100 = new Saque100();//inicio da cadeia
+//
+//        //criar cadeia – encadear os objetos da cadeia
+//        saque100.setSucessor(null);
+//
+//        //processar saques
+//        saque100.processaSaque(575);System.out.println();
+//        saque100.processaSaque(175);System.out.println();
+//        saque100.processaSaque(123);System.out.println();
+//        saque100.processaSaque(155);System.out.println();
+//        saque100.processaSaque(931);System.out.println();
+
+
+/*
         Personagem p;
-
-
         System.out.println("Personagem 1");
         p=new Personagem1(0,0);
 
-/*
+
         p.atacar();
         p.pular();
         p.correr();

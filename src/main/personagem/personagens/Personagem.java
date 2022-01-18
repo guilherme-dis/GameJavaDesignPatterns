@@ -1,10 +1,12 @@
 package main.personagem.personagens;
 
-import main.personagem.interfaces.Atacar;
-import main.personagem.interfaces.Correr;
-import main.personagem.interfaces.Pular;
-import main.state.Normal;
-import main.state.State;
+import main.personagem.handler.concretehandler.EncapsulaEscudo;
+import main.personagem.inimigo.Inimigo;
+import main.personagem.personagens.interfaces.Atacar;
+import main.personagem.personagens.interfaces.Correr;
+import main.personagem.personagens.interfaces.Pular;
+import main.personagem.personagens.state.Normal;
+import main.personagem.personagens.state.State;
 
 import java.util.ArrayList;
 import java.util.Observable;
@@ -21,7 +23,22 @@ public abstract class Personagem extends Observable {
 
 
 
-    public void andar(int x,int y){
+    ArrayList<Inimigo> inimigos = new ArrayList<>();
+
+    public ArrayList<Inimigo> getInimigos() {
+        return inimigos;
+    }
+
+    public void adicionaInimigos(Inimigo inimigo){
+        this.inimigos.add(inimigo);
+        this.addObserver(inimigo);
+    }
+    public void deletaInimigos(Inimigo inimigo){
+        this.inimigos.remove(inimigo);
+        this.deleteObserver(inimigo);
+    }
+
+    public void andar(int x, int y){
         this.x+=x;
         this.y+=y;
         setChanged();
@@ -77,10 +94,14 @@ public abstract class Personagem extends Observable {
     public void dano(int i){
          this.state.dano(i);
     }
+    public void solicitaDano(int i){
+
+    }
 
     public Integer getLife(){
         return life;
     }
+
     public void setLife(Integer life) {
         this.life = life;
     }
