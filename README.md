@@ -9,7 +9,7 @@ State
 
 Strategy
 
-Watch
+Observer
 
 Chain of Responsibility
 
