@@ -13,7 +13,7 @@ public class Escudo75 extends Escudos {
                 getSucessor().processaDano(dano, personagem);
         } else {
             this.escudo -= dano;
-            if (escudo < 0) {
+            if (escudo <= 0) {
                 System.out.println("O escudo de 75 QUEBROU");
                 if (getSucessor() == null) {
 

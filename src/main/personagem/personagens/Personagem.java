@@ -37,6 +37,7 @@ public abstract class Personagem extends Observable {
     public void dano(int dano) {
         if(escudo==null){
             this.state.dano(dano);
+            System.out.println("teste");
         }else{
             escudo.processaDano(dano,this);
         }

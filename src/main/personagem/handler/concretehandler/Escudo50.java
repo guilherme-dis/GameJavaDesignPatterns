@@ -13,10 +13,9 @@ public class Escudo50 extends Escudos {
                 getSucessor().processaDano(dano, personagem);
         } else {
             this.escudo -= dano;
-            if (escudo < 0) {
+            if (escudo <=0) {
                 System.out.println("O escudo de 50 QUEBROU");
                 if (getSucessor() == null) {
-
                     personagem.setEscudo(null);
                     personagem.getState().dano(escudo * -1);
                 } else {
