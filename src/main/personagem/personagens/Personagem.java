@@ -46,13 +46,18 @@ public abstract class Personagem extends Observable {
     }
 
 
-
+    public void notifyObserversAtaque(){
+        //getInimigos().forEach(inimigo -> inimigo.updateAtaque(this));
+        for (Inimigo i :
+                getInimigos()) {
+            i.updateAtaque(this);
+        }
+    }
 
 
 
 
     public void show(){
-        System.out.println("("+x+","+y+")");
         setChanged();
         notifyObservers();
     }

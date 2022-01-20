@@ -107,41 +107,7 @@ public class View extends JPanel {
                 p.setY(p.getY() + 10);
 
             if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-
-                p.getInimigos().stream().filter(inimigo -> inimigo.getX() == p.getX() && inimigo.getY() == p.getY()).forEach(inimigo -> {
-                    inimigo.dano(50);
-                    {
-                        if (inimigo.getLife() <= 0) p.deletaInimigos(inimigo);
-                    }
-                });
-//                    for (Inimigo inimigo:p.getInimigos()){
-//                         if(inimigo.getX()==p.getX()&&inimigo.getY()==p.getY()){
-//                              inimigo.dano(50);{
-//                                   if(inimigo)
-//                              }
-//                         }
-//                    }
-//                    p.getInimigos().stream().forEach(getX()==p.getX()&&getY()==p.getY() );
-//                    p.getInimigos();
-
-//                    if(i1.getX()==p.getX()&&i1.getY()==p.getY()){
-//                         i1.dano(50);
-//                         if(i1.getLife()<=0){
-//                              p.deleteObserver(i1);
-//                         }
-//                    }
-//                    if(i2.getX()==p.getX()&&i2.getY()==p.getY()){
-//                         i2.dano(50);
-//                         if(i2.getLife()<=0){
-//                              p.deleteObserver(i2);
-//                         }
-//                    }if(i3.getX()==p.getX()&&i3.getY()==p.getY()){
-//                         i3.dano(50);
-//                         if(i3.getLife()<=0){
-//                              p.deleteObserver(i3 );
-//                         }
-//                    }
-
+                p.notifyObserversAtaque();
             }
 
 

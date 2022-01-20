@@ -13,13 +13,13 @@ public class Inimigo implements Observer {
     private int x;
     private int y;
 
-
     public Inimigo(String nome, int x, int y) {
         this.nome=nome;
         this.x=x;
         this.y=y;
         this.life=100;
     }
+
     public void dano(int o){
         this.life-=o;
     }
@@ -34,10 +34,14 @@ public class Inimigo implements Observer {
         }else{
             if(personagem.getX()>this.x)this.x++;
             else if(personagem.getX()<this.x)this.x--;
-
             if (personagem.getY() > this.y) this.y++;
             else if (personagem.getY() < this.y) this.y--;
-            System.out.println(nome+" {"+x+","+y+"}");
+        }
+    }
+    public void updateAtaque(Personagem personagem){
+        if(personagem.getX()==this.getX()&&personagem.getY()==this.getY()){
+            this.dano(50);
+            if (this.getLife() <= 0) personagem.deletaInimigos(this);
         }
     }
 
@@ -73,4 +77,5 @@ public class Inimigo implements Observer {
     public void setLife(Integer life) {
         this.life = life;
     }
+
 }

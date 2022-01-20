@@ -8,10 +8,8 @@ import main.personagem.handler.concretehandler.*;
 public class App {
     public static void main(String[] args) throws InterruptedException {
 
-
-
-//        View g = new View();
-//        g.jogar(g);
+        View g = new View();
+        g.jogar(g);
 //
 //
 //        //instanciar objetos da cadeia
