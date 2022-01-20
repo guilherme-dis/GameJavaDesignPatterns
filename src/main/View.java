@@ -1,5 +1,8 @@
 package main;
 
+import main.personagem.handler.Escudos;
+import main.personagem.handler.concretehandler.Escudo25;
+import main.personagem.handler.concretehandler.Escudo50;
 import main.personagem.inimigo.Inimigo;
 import main.personagem.personagens.Personagem;
 import main.personagem.personagens.Personagem1;
@@ -76,6 +79,12 @@ public class View extends JPanel {
         p.adicionaInimigos(i2);
         p.adicionaInimigos(i3);
 
+        Escudos escudo50 = new Escudo50();
+        Escudos escudo25 = new Escudo25();
+        escudo50.setSucessor(escudo25);
+        escudo25.setSucessor(null);
+
+        p.setEscudo(escudo50);
 
         while (true) {
             p.show();
@@ -109,7 +118,6 @@ public class View extends JPanel {
             if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                 p.notifyObserversAtaque();
             }
-
 
         }
 

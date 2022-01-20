@@ -3,6 +3,8 @@ package main;
 
 import main.personagem.handler.Escudos;
 import main.personagem.handler.concretehandler.*;
+import main.personagem.personagens.Personagem;
+import main.personagem.personagens.Personagem1;
 
 
 public class App {
@@ -25,7 +27,22 @@ public class App {
 //        saque100.processaSaque(155);System.out.println();
 //        saque100.processaSaque(931);System.out.println();
 
-
+//        Escudos escudo50 = new Escudo50();
+//        Escudos escudo25 = new Escudo25();
+//        escudo50.setSucessor(escudo25);
+//        escudo25.setSucessor(null);
+//
+//        Personagem p=new Personagem1(0,0);
+//        p.setEscudo(escudo50);
+//        p.dano(55);
+//        p.dano(5);
+//        p.dano(5);
+//        p.dano(70);
+//        p.dano(5);
+//        //p.escudoDano(50);
+//        //p.escudoDano(80);
+//        System.out.println(p.getLife());;
+//        System.out.println(p.getState());
 /*
         Personagem p;
         System.out.println("Personagem 1");

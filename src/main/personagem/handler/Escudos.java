@@ -1,5 +1,7 @@
 package main.personagem.handler;
 
+import main.personagem.personagens.Personagem;
+
 public abstract class Escudos {
     private Escudos sucessor;
 
@@ -9,5 +11,5 @@ public abstract class Escudos {
     public void setSucessor(Escudos sucessor) {
         this.sucessor = sucessor;
     }
-    public abstract void processaDano(int dano);
+    public abstract void processaDano(int dano, Personagem personagem);
 }

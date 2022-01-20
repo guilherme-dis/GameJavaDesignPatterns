@@ -28,8 +28,7 @@ public class Inimigo implements Observer {
     public void update(Observable observable, Object o) {
         Personagem personagem= (Personagem) observable;
         if(((this.x- personagem.getX())==0)&&((this.y- personagem.getY())==0)){
-            personagem.dano(5);//solicita dano
-            personagem.solicitaDano(5);
+            personagem.dano(5);
             System.out.println("chegou "+nome);
         }else{
             if(personagem.getX()>this.x)this.x++;

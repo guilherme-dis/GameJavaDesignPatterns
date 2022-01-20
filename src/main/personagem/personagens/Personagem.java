@@ -1,5 +1,6 @@
 package main.personagem.personagens;
 
+import main.personagem.handler.Escudos;
 import main.personagem.handler.concretehandler.EncapsulaEscudo;
 import main.personagem.inimigo.Inimigo;
 import main.personagem.personagens.interfaces.Atacar;
@@ -19,8 +20,28 @@ public abstract class Personagem extends Observable {
     private int y;
 
 
+    public void solicitaDano(int i) {
 
+    }
 
+    Escudos escudo;
+
+    public Escudos getEscudo() {
+        return escudo;
+    }
+
+    public void setEscudo(Escudos escudo) {
+        this.escudo = escudo;
+    }
+
+    public void dano(int dano) {
+        if(escudo==null){
+            this.state.dano(dano);
+        }else{
+            escudo.processaDano(dano,this);
+        }
+
+    }
 
 
     ArrayList<Inimigo> inimigos = new ArrayList<>();
@@ -29,24 +50,25 @@ public abstract class Personagem extends Observable {
         return inimigos;
     }
 
-    public void adicionaInimigos(Inimigo inimigo){
+    public void adicionaInimigos(Inimigo inimigo) {
         this.inimigos.add(inimigo);
         this.addObserver(inimigo);
     }
-    public void deletaInimigos(Inimigo inimigo){
+
+    public void deletaInimigos(Inimigo inimigo) {
         this.inimigos.remove(inimigo);
         this.deleteObserver(inimigo);
     }
 
-    public void andar(int x, int y){
-        this.x+=x;
-        this.y+=y;
+    public void andar(int x, int y) {
+        this.x += x;
+        this.y += y;
         setChanged();
         notifyObservers();
     }
 
 
-    public void notifyObserversAtaque(){
+    public void notifyObserversAtaque() {
         //getInimigos().forEach(inimigo -> inimigo.updateAtaque(this));
         for (Inimigo i :
                 getInimigos()) {
@@ -55,9 +77,7 @@ public abstract class Personagem extends Observable {
     }
 
 
-
-
-    public void show(){
+    public void show() {
         setChanged();
         notifyObservers();
     }
@@ -67,52 +87,56 @@ public abstract class Personagem extends Observable {
     private Correr correr;
     private Pular pular;
 
-     public Personagem(int x,int y){
-         this.state = new Normal(this);
-         this.life = 69;
-         this.x=x;
-         this.y=y;
-     }
+    public Personagem(int x, int y) {
+        this.state = new Normal(this);
+        this.life = 69;
+        this.x = x;
+        this.y = y;
+    }
+
     public void setAtacar(Atacar atacar) {
         this.atacar = atacar;
     }
+
     public void setCorrer(Correr correr) {
         this.correr = correr;
     }
+
     public void setPular(Pular pular) {
         this.pular = pular;
     }
 
-    public void atacar(){
+    public void atacar() {
         atacar.atacar();
     }
-    public void pular(){
+
+    public void pular() {
         pular.pular();
     }
-    public void correr(){
+
+    public void correr() {
         correr.correr();
     }
 
-    public void ganhoDeVida(int i){
-         this.state.ganhoDeVida(i);
-    }
-    public void dano(int i){
-         this.state.dano(i);
-    }
-    public void solicitaDano(int i){
-
+    public void ganhoDeVida(int i) {
+        this.state.ganhoDeVida(i);
     }
 
-    public Integer getLife(){
+
+
+
+    public Integer getLife() {
         return life;
     }
 
     public void setLife(Integer life) {
         this.life = life;
     }
+
     public State getState() {
         return state;
     }
+
     public void setState(State state) {
         this.state = state;
     }
