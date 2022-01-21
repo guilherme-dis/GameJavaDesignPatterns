@@ -1,9 +1,9 @@
 package main.personagem.inimigo;
 
-import main.personagem.personagens.Personagem;
+import main.personagem.personagens.Sujeito;
 
 public interface Observador {
-    public void update();
-    //public void update(PersonagemInterface personagemInterface);
-    public void updateAtaque(Personagem personagem);
+    //public void update();
+    public void update(Sujeito sujeito);
+    public void updateAtaque(Sujeito sujeito);
 }

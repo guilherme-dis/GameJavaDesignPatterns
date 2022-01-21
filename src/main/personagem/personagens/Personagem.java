@@ -11,35 +11,30 @@ import main.personagem.personagens.state.State;
 
 import java.util.ArrayList;
 
-public abstract class Personagem {
+public abstract class Personagem implements Sujeito{
     private Atacar atacar;
     private Correr correr;
     private Pular pular;
     private State state;
     private Integer life;
-    private ArrayList<Observador> inimigos = new ArrayList<>();
+    private ArrayList<Observador> lista = new ArrayList<>();
     private int x;
     private int y;
     private Escudos escudo;
 
+    public Personagem(int x, int y) {
+        this.state = new Normal(this);
+        this.life = 69;
+        this.x = x;
+        this.y = y;
+    }
 
     public void dano(int dano) {
         if (escudo == null) {
             this.state.dano(dano);
-            System.out.println("teste");
         } else {
             escudo.processaDano(dano, this);
         }
-
-    }
-
-
-    public void adicionarObservador(Inimigo inimigo) {
-        inimigos.add(inimigo);
-    }
-
-    public void removerObservador(Inimigo inimigo) {
-        inimigos.remove(inimigo);
     }
 
     public void andar(int x, int y) {
@@ -48,15 +43,26 @@ public abstract class Personagem {
         notifyObservers();
     }
 
+    @Override
+    public void addObserver(Observador o) {
+        lista.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observador o) {
+        lista.remove(o);
+    }
+
     public void notifyObservers() {
-        getInimigos().forEach(Observador::update);
+        getLista().forEach(e->e.update(this));
     }
 
     public void notifyObserversAtaque() {
-       // getInimigos().forEach(e->e.updateAtaque(this));
-        for (Observador i :getInimigos()){
-            i.updateAtaque(this);
-        }
+        lista.forEach(e->e.updateAtaque(this));
+//        getInimigos().forEach(e->e.updateAtaque(this));
+//        for (Observador i : getLista()){
+//            i.updateAtaque(this);
+//        }
     }
 
 
@@ -64,12 +70,7 @@ public abstract class Personagem {
         notifyObservers();
     }
 
-    public Personagem(int x, int y) {
-        this.state = new Normal(this);
-        this.life = 69;
-        this.x = x;
-        this.y = y;
-    }
+
 
     public void setAtacar(Atacar atacar) {
         this.atacar = atacar;
@@ -131,8 +132,8 @@ public abstract class Personagem {
         this.y = y;
     }
 
-    public ArrayList<Observador> getInimigos() {
-        return inimigos;
+    public ArrayList<Observador> getLista() {
+        return lista;
     }
 
     public Escudos getEscudo() {

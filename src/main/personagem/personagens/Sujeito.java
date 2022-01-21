@@ -2,7 +2,7 @@ package main.personagem.personagens;
 
 import main.personagem.inimigo.Observador;
 
-public interface PersonagemInterface {
+public interface Sujeito {
 
     public void addObserver(Observador o);
     public void removeObserver(Observador o);

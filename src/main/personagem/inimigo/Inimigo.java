@@ -1,6 +1,7 @@
 package main.personagem.inimigo;
 
 import main.personagem.personagens.Personagem;
+import main.personagem.personagens.Sujeito;
 
 public class Inimigo implements Observador {
 
@@ -9,38 +10,35 @@ public class Inimigo implements Observador {
 
     private int x;
     private int y;
-    private final Personagem personagem;
 
-
-    public Inimigo(Personagem personagem, String nome, int x, int y) {
-        this.personagem = personagem;
+    public Inimigo(String nome, int x, int y) {
         this.nome = nome;
         this.x = x;
         this.y = y;
         this.life = 100;
-        this.personagem.adicionarObservador(this);
     }
 
-
     @Override
-    public void update() {
-        if (((this.x - this.personagem.getX()) == 0) && ((this.y - this.personagem.getY()) == 0)) {
-            this.personagem.dano(5);
+    public void update(Sujeito sujeito) {
+        Personagem personagem=(Personagem) sujeito;
+        if (((this.x - personagem.getX()) == 0) && ((this.y - personagem.getY()) == 0)) {
+           personagem.dano(5);
             System.out.println("chegou " + nome);
         } else {
-            if (this.personagem.getX() > this.x) this.x++;
-            else if (this.personagem.getX() < this.x) this.x--;
-            if (this.personagem.getY() > this.y) this.y++;
-            else if (this.personagem.getY() < this.y) this.y--;
+            if (personagem.getX() > this.x) this.x++;
+            else if (personagem.getX() < this.x) this.x--;
+            if (personagem.getY() > this.y) this.y++;
+            else if (personagem.getY() < this.y) this.y--;
         }
     }
 
     @Override
-    public void updateAtaque(Personagem personagem) {
+    public void updateAtaque(Sujeito sujeito) {
+        Personagem personagem=(Personagem) sujeito;
         if (personagem.getX() == this.getX() && personagem.getY() == this.getY()) {
             this.dano(50);
             if (this.getLife() <= 0) {
-                personagem.removerObservador(this);
+                personagem.removeObserver(this);
             }
         }
     }
@@ -81,6 +79,5 @@ public class Inimigo implements Observador {
     public void setLife(Integer life) {
         this.life = life;
     }
-
 
 }
