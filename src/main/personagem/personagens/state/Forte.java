@@ -1,7 +1,7 @@
 package main.personagem.personagens.state;
 
-import main.personagem.personagens.classesimplement.AtacarForte;
-import main.personagem.personagens.classesimplement.CorrerRapido;
+import main.personagem.personagens.atributos.tipos.AtacarForte;
+import main.personagem.personagens.atributos.tipos.CorrerRapido;
 import main.personagem.personagens.Personagem;
 
 public class Forte extends State {

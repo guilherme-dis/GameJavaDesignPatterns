@@ -1,7 +1,7 @@
 package main.personagem.personagens.state;
 
-import main.personagem.personagens.classesimplement.AtacarFraco;
-import main.personagem.personagens.classesimplement.CorrerDevagar;
+import main.personagem.personagens.atributos.tipos.AtacarFraco;
+import main.personagem.personagens.atributos.tipos.CorrerDevagar;
 import main.personagem.personagens.Personagem;
 
 public class Perigo extends State {

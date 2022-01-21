@@ -1,6 +1,6 @@
-package main.personagem.personagens.classesimplement;
+package main.personagem.personagens.atributos.tipos;
 
-import main.personagem.personagens.interfaces.Pular;
+import main.personagem.personagens.atributos.Pular;
 
 public class PularAlto implements Pular {
     public void pular(){

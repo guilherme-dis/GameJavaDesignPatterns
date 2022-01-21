@@ -1,11 +1,10 @@
 package main.personagem.personagens;
 
 import main.personagem.handler.Escudos;
-import main.personagem.handler.concretehandler.EncapsulaEscudo;
 import main.personagem.inimigo.Inimigo;
-import main.personagem.personagens.interfaces.Atacar;
-import main.personagem.personagens.interfaces.Correr;
-import main.personagem.personagens.interfaces.Pular;
+import main.personagem.personagens.atributos.Atacar;
+import main.personagem.personagens.atributos.Correr;
+import main.personagem.personagens.atributos.Pular;
 import main.personagem.personagens.state.Normal;
 import main.personagem.personagens.state.State;
 
@@ -57,8 +56,9 @@ public abstract class Personagem extends Observable {
     }
 
     public void deletaInimigos(Inimigo inimigo) {
-        this.inimigos.remove(inimigo);
+
         this.deleteObserver(inimigo);
+        inimigos.remove(inimigo);
     }
 
     public void andar(int x, int y) {
@@ -70,11 +70,13 @@ public abstract class Personagem extends Observable {
 
 
     public void notifyObserversAtaque() {
-        //getInimigos().forEach(inimigo -> inimigo.updateAtaque(this));
-        for (Inimigo i :
-                getInimigos()) {
-            i.updateAtaque(this);
-        }
+        getInimigos().forEach(System.out::println);
+        System.out.println();
+        getInimigos().forEach(inimigo -> inimigo.updateAtaque(this));
+//        for (Inimigo i :
+//                getInimigos()) {
+//            i.updateAtaque(this);
+//        }
     }
 
 

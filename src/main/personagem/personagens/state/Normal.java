@@ -1,7 +1,7 @@
 package main.personagem.personagens.state;
 
-import main.personagem.personagens.classesimplement.AtacarMedio;
-import main.personagem.personagens.classesimplement.CorrerMedio;
+import main.personagem.personagens.atributos.tipos.AtacarMedio;
+import main.personagem.personagens.atributos.tipos.CorrerMedio;
 import main.personagem.personagens.Personagem;
 
 public class Normal extends State {

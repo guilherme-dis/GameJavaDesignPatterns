@@ -1,4 +1,4 @@
-package main.personagem.personagens.interfaces;
+package main.personagem.personagens.atributos;
 
 public interface Pular {
     public void pular();
