@@ -13,4 +13,8 @@ public class Personagem1 extends Personagem {
         setCorrer(new CorrerMedio());
     }
 
+
+
+
+
 }

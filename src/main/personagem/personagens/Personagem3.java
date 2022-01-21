@@ -13,4 +13,7 @@ public class Personagem3 extends Personagem {
         setAtacar(new AtacarForte());
     }
 
+
+
+
 }

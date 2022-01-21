@@ -13,4 +13,8 @@ public class Personagem2 extends Personagem {
         setPular(new PularAlto());
     }
 
+
+
+
+
 }

@@ -46,7 +46,7 @@ public class View extends JPanel {
 
 
         g2d.drawString(Integer.toString(p.getLife()), 10, 10);
-        g2d.drawString(Integer.toString(p.countObservers()), 250, 10);
+        g2d.drawString(Integer.toString(p.getInimigos().size()), 250, 10);
     }
 
     public void jogar(View game) throws InterruptedException {
@@ -69,15 +69,19 @@ public class View extends JPanel {
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+
         p = new Personagem1(512, 384);
-        i1 = new Inimigo("dudu", 10, 450);
-        i2 = new Inimigo("tata", 400, 20);
-        i3 = new Inimigo("vava", 50, 50);
+//        p.adicionarObservador(i1);
+//        p.adicionarObservador(i2);
+//        p.adicionarObservador(i3);
+        i1 = new Inimigo(p,"dudu", 10, 450);
+        i2 = new Inimigo(p,"tata", 400, 20);
+        i3 = new Inimigo(p,"vava", 50, 50);
 
-
+/*
         p.adicionaInimigos(i1);
         p.adicionaInimigos(i2);
-        p.adicionaInimigos(i3);
+        p.adicionaInimigos(i3);*/
 
         Escudos escudo50 = new Escudo50();
         Escudos escudo25 = new Escudo25();

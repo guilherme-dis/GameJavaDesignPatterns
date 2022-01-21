@@ -2,6 +2,7 @@ package main.personagem.personagens;
 
 import main.personagem.handler.Escudos;
 import main.personagem.inimigo.Inimigo;
+import main.personagem.inimigo.Observador;
 import main.personagem.personagens.atributos.Atacar;
 import main.personagem.personagens.atributos.Correr;
 import main.personagem.personagens.atributos.Pular;
@@ -9,86 +10,59 @@ import main.personagem.personagens.state.Normal;
 import main.personagem.personagens.state.State;
 
 import java.util.ArrayList;
-import java.util.Observable;
 
-public abstract class Personagem extends Observable {
+public abstract class Personagem {
+    private Atacar atacar;
+    private Correr correr;
+    private Pular pular;
     private State state;
     private Integer life;
-
+    private ArrayList<Observador> inimigos = new ArrayList<>();
     private int x;
     private int y;
+    private Escudos escudo;
 
-
-    public void solicitaDano(int i) {
-
-    }
-
-    Escudos escudo;
-
-    public Escudos getEscudo() {
-        return escudo;
-    }
-
-    public void setEscudo(Escudos escudo) {
-        this.escudo = escudo;
-    }
 
     public void dano(int dano) {
-        if(escudo==null){
+        if (escudo == null) {
             this.state.dano(dano);
             System.out.println("teste");
-        }else{
-            escudo.processaDano(dano,this);
+        } else {
+            escudo.processaDano(dano, this);
         }
 
     }
 
 
-    ArrayList<Inimigo> inimigos = new ArrayList<>();
-
-    public ArrayList<Inimigo> getInimigos() {
-        return inimigos;
+    public void adicionarObservador(Inimigo inimigo) {
+        inimigos.add(inimigo);
     }
 
-    public void adicionaInimigos(Inimigo inimigo) {
-        this.inimigos.add(inimigo);
-        this.addObserver(inimigo);
-    }
-
-    public void deletaInimigos(Inimigo inimigo) {
-
-        this.deleteObserver(inimigo);
+    public void removerObservador(Inimigo inimigo) {
         inimigos.remove(inimigo);
     }
 
     public void andar(int x, int y) {
         this.x += x;
         this.y += y;
-        setChanged();
         notifyObservers();
     }
 
+    public void notifyObservers() {
+        getInimigos().forEach(Observador::update);
+    }
 
     public void notifyObserversAtaque() {
-        getInimigos().forEach(System.out::println);
-        System.out.println();
-        getInimigos().forEach(inimigo -> inimigo.updateAtaque(this));
-//        for (Inimigo i :
-//                getInimigos()) {
-//            i.updateAtaque(this);
-//        }
+       // getInimigos().forEach(e->e.updateAtaque(this));
+        for (Observador i :getInimigos()){
+            i.updateAtaque(this);
+        }
     }
 
 
     public void show() {
-        setChanged();
         notifyObservers();
     }
-
-
-    private Atacar atacar;
-    private Correr correr;
-    private Pular pular;
 
     public Personagem(int x, int y) {
         this.state = new Normal(this);
@@ -125,9 +99,6 @@ public abstract class Personagem extends Observable {
         this.state.ganhoDeVida(i);
     }
 
-
-
-
     public Integer getLife() {
         return life;
     }
@@ -158,5 +129,17 @@ public abstract class Personagem extends Observable {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public ArrayList<Observador> getInimigos() {
+        return inimigos;
+    }
+
+    public Escudos getEscudo() {
+        return escudo;
+    }
+
+    public void setEscudo(Escudos escudo) {
+        this.escudo = escudo;
     }
 }
