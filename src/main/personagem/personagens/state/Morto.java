@@ -1,9 +1,9 @@
 package main.personagem.personagens.state;
 
+import main.personagem.personagens.Personagem;
 import main.personagem.personagens.atributos.tipos.Atacar_0;
 import main.personagem.personagens.atributos.tipos.Correr_0;
 import main.personagem.personagens.atributos.tipos.Pular_0;
-import main.personagem.personagens.Personagem;
 
 public class Morto extends State {
     public Morto(Personagem context) {

@@ -12,9 +12,4 @@ public class Personagem2 extends Personagem {
         setCorrer(new CorrerRapido());
         setPular(new PularAlto());
     }
-
-
-
-
-
 }

@@ -1,7 +1,5 @@
 package main.personagem.handler.concretehandler;
 
-import main.personagem.handler.Escudos;
-
 public class EncapsulaEscudo {
 //    Escudos escudo100 = new Escudo100();
 //    Escudos escudo75 = new Escudo75();

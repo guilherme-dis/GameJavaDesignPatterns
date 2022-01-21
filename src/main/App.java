@@ -1,12 +1,6 @@
 package main;
 
 
-import main.personagem.handler.Escudos;
-import main.personagem.handler.concretehandler.*;
-import main.personagem.personagens.Personagem;
-import main.personagem.personagens.Personagem1;
-
-
 public class App {
     public static void main(String[] args) throws InterruptedException {
 

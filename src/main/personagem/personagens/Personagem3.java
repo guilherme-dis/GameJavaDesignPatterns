@@ -12,8 +12,4 @@ public class Personagem3 extends Personagem {
         setCorrer(new CorrerRapido());
         setAtacar(new AtacarForte());
     }
-
-
-
-
 }

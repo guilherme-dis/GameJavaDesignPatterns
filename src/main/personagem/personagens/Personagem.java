@@ -1,7 +1,6 @@
 package main.personagem.personagens;
 
 import main.personagem.handler.Escudos;
-import main.personagem.inimigo.Inimigo;
 import main.personagem.inimigo.Observador;
 import main.personagem.personagens.atributos.Atacar;
 import main.personagem.personagens.atributos.Correr;
