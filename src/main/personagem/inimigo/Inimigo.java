@@ -36,7 +36,7 @@ public class Inimigo implements Observador {
     public void updateAtaque(Sujeito sujeito) {
         Personagem personagem=(Personagem) sujeito;
         if (personagem.getX() == this.getX() && personagem.getY() == this.getY()) {
-            this.dano(50);
+            this.dano(personagem.atacar());
             if (this.getLife() <= 0) {
                 personagem.removeObserver(this);
             }

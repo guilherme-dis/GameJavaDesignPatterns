@@ -83,8 +83,8 @@ public abstract class Personagem implements Sujeito{
         this.pular = pular;
     }
 
-    public void atacar() {
-        atacar.atacar();
+    public int atacar() {
+       return atacar.atacar();
     }
 
     public void pular() {
