@@ -12,7 +12,6 @@ public class Normal extends State {
         getPersonagem().setAtacar(new AtaqueMedio());
         getPersonagem().setCorrer(new CorridaMedio());
         getPersonagem().setPular(new PuloMedio());
-        getPersonagem().setCusto(personagem.atacar());
     }
     @Override
     protected void setLimites() {

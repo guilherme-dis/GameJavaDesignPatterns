@@ -1,11 +1,11 @@
 package com.company.personagens.poderes;
 
-import com.company.personagens.personagens.Personagem;
+import com.company.personagens.comportamentos.Atacar;
 
-public class SuperChute extends PersonagemDecorador {
-    public SuperChute(Personagem personagem) {
-        super(personagem,personagem.getNome(), personagem.getX(), personagem.getY());
-//        setDano(20);
-        setCusto(15);
+public class SuperChute extends AtaqueDecorador {
+
+    public SuperChute(Atacar atacarDecorado) {
+        super(atacarDecorado);
+        setDano(15);
     }
 }

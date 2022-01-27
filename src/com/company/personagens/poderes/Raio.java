@@ -1,12 +1,11 @@
 package com.company.personagens.poderes;
 
-import com.company.personagens.personagens.Personagem;
-import com.company.personagens.poderes.PersonagemDecorador;
+import com.company.personagens.comportamentos.Atacar;
 
-public class Raio extends PersonagemDecorador {
-    public Raio(Personagem personagem) {
-        super(personagem,personagem.getNome(), personagem.getX(), personagem.getY());
-//        setDano(50);
-        setCusto(5);
+public class Raio extends AtaqueDecorador {
+
+    public Raio(Atacar atacarDecorado) {
+        super(atacarDecorado);
+        setDano(20);
     }
 }

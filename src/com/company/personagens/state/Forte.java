@@ -12,7 +12,6 @@ public class Forte extends State {
         getPersonagem().setCorrer(new CorridaRapido());
         getPersonagem().setPular(new PuloAlto());
 
-        getPersonagem().setCusto(personagem.atacar());
     }
 
     @Override

@@ -10,26 +10,17 @@ import com.company.personagens.state.State;
 
 import java.util.ArrayList;
 
-public abstract class Personagem implements Sujeito{
+public abstract class Personagem implements Sujeito {
     private String nome;
-    public Personagem(String nome,int x,int y) {
-        this.nome=nome;
-        this.x=x;
-        this.y=y;
+
+    public Personagem(String nome, int x, int y) {
+        this.nome = nome;
+        this.x = x;
+        this.y = y;
         this.life = 70;
-
         this.setState(new Normal(this));
-        setCusto(atacar());
-    }
-    public int custo;
-
-    public int getCusto() {
-        return custo;
     }
 
-    public void setCusto(int custo) {
-        this.custo = custo;
-    }
 
     //chain of responsabily
     private Escudos escudo;
@@ -70,7 +61,6 @@ public abstract class Personagem implements Sujeito{
     }
 
 
-
     //State
     public void perderLife(int n) {
         state.perderLife(n);
@@ -90,8 +80,7 @@ public abstract class Personagem implements Sujeito{
     private Pular pular;
 
     public int atacar() {
-        return atacar.atacar();
-
+        return atacar.getDano();
     }
 
     public int pular() {
@@ -169,5 +158,9 @@ public abstract class Personagem implements Sujeito{
 
     public void setEscudo(Escudos escudo) {
         this.escudo = escudo;
+    }
+
+    public Atacar getAtacar() {
+        return atacar;
     }
 }

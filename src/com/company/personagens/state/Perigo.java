@@ -11,8 +11,6 @@ public class Perigo extends State {
         getPersonagem().setAtacar(new AtaqueFraco());
         getPersonagem().setCorrer(new CorridaDevagar());
         getPersonagem().setPular(new PuloBaixo());
-
-        getPersonagem().setCusto(personagem.atacar());
     }
 
     @Override
