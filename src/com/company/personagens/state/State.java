@@ -1,4 +1,4 @@
-package com.company.personagens.state;
+  package com.company.personagens.state;
 
 import com.company.personagens.personagens.Personagem;
 

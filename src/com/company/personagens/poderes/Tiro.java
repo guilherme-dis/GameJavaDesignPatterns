@@ -6,6 +6,6 @@ public class Tiro extends AtaqueDecorador {
 
     public Tiro(Atacar atacarDecorado) {
         super(atacarDecorado);
-        setDano(10);
+        setDano(11);
     }
 }

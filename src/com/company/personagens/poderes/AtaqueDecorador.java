@@ -3,7 +3,7 @@ package com.company.personagens.poderes;
 import com.company.personagens.comportamentos.Atacar;
 
 public abstract class AtaqueDecorador extends Atacar {
-    private final Atacar atacarDecorado;
+    private Atacar atacarDecorado;
 
 
     public AtaqueDecorador(Atacar atacarDecorado) {
@@ -14,4 +14,10 @@ public abstract class AtaqueDecorador extends Atacar {
         return atacarDecorado.getDano()+super.getDano();
     }
 
+    public Atacar getAtacarDecorado() {
+        return atacarDecorado;
+    }
+    public void setAtacarDecorado(Atacar atacarDecorado) {
+        this.atacarDecorado = atacarDecorado;
+    }
 }

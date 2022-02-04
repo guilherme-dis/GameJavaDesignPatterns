@@ -9,6 +9,8 @@ import com.company.personagens.inimigo.Inimigo2;
 import com.company.personagens.inimigo.Inimigo3;
 import com.company.personagens.personagens.Personagem;
 import com.company.personagens.personagens.Personagem1;
+import com.company.personagens.poderes.Raio;
+import com.company.personagens.poderes.Tiro;
 
 import javax.swing.*;
 import java.awt.*;
@@ -82,9 +84,12 @@ public class View extends JPanel {
         Escudos escudo25 = new Escudo25();
         escudo50.setSucessor(escudo25);
         escudo25.setSucessor(null);
-
         p.setEscudo(escudo50);
-;
+        p.setAtacar(new Raio(p.getAtacar()));
+        p.setAtacar(new Tiro(p.getAtacar()));
+
+
+
         System.out.println(p.getEscudo());
         while (true) {
             p.notifyObservers();
