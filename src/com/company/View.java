@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.personagens.SimplePersonagemFactory;
 import com.company.personagens.escudo.Escudos;
 import com.company.personagens.escudo.escudos.Escudo25;
 import com.company.personagens.escudo.escudos.Escudo50;
@@ -8,9 +9,6 @@ import com.company.personagens.inimigo.Inimigo1;
 import com.company.personagens.inimigo.Inimigo2;
 import com.company.personagens.inimigo.Inimigo3;
 import com.company.personagens.personagens.Personagem;
-import com.company.personagens.personagens.Personagem1;
-import com.company.personagens.poderes.Raio;
-import com.company.personagens.poderes.Tiro;
 
 import javax.swing.*;
 import java.awt.*;
@@ -72,7 +70,7 @@ public class View extends JPanel {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
-        p = new Personagem1("Kratos",512, 384);
+        p = SimplePersonagemFactory.createPersonagem(512,384);
         i1 = new Inimigo1("dudu", 10, 450);
         i2 = new Inimigo2("tata", 400, 20);
         i3 = new Inimigo3("vava", 50, 50);
@@ -85,8 +83,6 @@ public class View extends JPanel {
         escudo50.setSucessor(escudo25);
         escudo25.setSucessor(null);
         p.setEscudo(escudo50);
-        p.setAtacar(new Raio(p.getAtacar()));
-        p.setAtacar(new Tiro(p.getAtacar()));
 
 
 
