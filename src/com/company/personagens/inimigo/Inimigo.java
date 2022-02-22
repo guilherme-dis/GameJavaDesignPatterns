@@ -6,7 +6,6 @@ import com.company.personagens.personagens.Sujeito;
 public abstract class Inimigo implements Observador {
     private String nome;
     private Integer life;
-//TODO implementar os estados para os inimigos, mas eles vão ter que ter estados diferentes dos personagens principais.
     public Inimigo(String nome, int x, int y) {
         this.nome = nome;
         this.x = x;

@@ -1,6 +1,5 @@
-package com.company;
+package com.company.personagens;
 
-import com.company.personagens.SimplePersonagemFactory;
 import com.company.personagens.escudo.Escudos;
 import com.company.personagens.escudo.escudos.Escudo25;
 import com.company.personagens.escudo.escudos.Escudo50;
@@ -15,13 +14,14 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class View extends JPanel {
+public abstract class Factory extends JPanel {
+    public abstract Personagem createPersonagem(int x, int y);
     private Personagem p;
     private Inimigo i1;
     private Inimigo i2;
     private Inimigo i3;
 
-    public View() {
+    public Factory() {
         KeyListener listener = new MyKeyListener();
         this.addKeyListener(listener);
         this.setFocusable(true);
@@ -51,7 +51,7 @@ public class View extends JPanel {
 
     }
 
-    public void jogar(View game) throws InterruptedException {
+    public void jogar(Factory game) throws InterruptedException {
         int x = 1024;
         int y = 768;
         JFrame frame = new JFrame("Kindon");
@@ -69,8 +69,9 @@ public class View extends JPanel {
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        Factory simple=new SimplePersonagemFactory();
+        p = simple.createPersonagem(250,250);
 
-        p = SimplePersonagemFactory.createPersonagem(512,384);
         i1 = new Inimigo1("dudu", 10, 450);
         i2 = new Inimigo2("tata", 400, 20);
         i3 = new Inimigo3("vava", 50, 50);
