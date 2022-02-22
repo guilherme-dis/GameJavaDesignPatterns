@@ -3,13 +3,13 @@ package com.company.personagens;
 import com.company.personagens.comportamentos.comportamentosconcretos.CorridaDevagar;
 import com.company.personagens.comportamentos.comportamentosconcretos.PuloAlto;
 import com.company.personagens.comportamentos.comportamentosconcretos.PuloBaixo;
+import com.company.personagens.inimigo.Inimigo;
 import com.company.personagens.personagens.*;
 import com.company.personagens.poderes.Raio;
 import com.company.personagens.poderes.SuperChute;
 import com.company.personagens.poderes.Tiro;
 
 public class AdvancedPersonagemFactory extends Factory {
-
 
     public  Personagem createPersonagem(int x, int y) {
         double n = Math.random();
@@ -45,6 +45,11 @@ public class AdvancedPersonagemFactory extends Factory {
             p.setAtacar(new Tiro(p.getAtacar()));
         }
         return p;
+    }
+
+    @Override
+    public Inimigo createInimigo(int x, int y) {
+        return null;
     }
 
 

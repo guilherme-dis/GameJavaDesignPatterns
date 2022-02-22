@@ -4,6 +4,7 @@ import com.company.personagens.comportamentos.comportamentosconcretos.AtaqueFrac
 import com.company.personagens.comportamentos.comportamentosconcretos.CorridaDevagar;
 import com.company.personagens.comportamentos.comportamentosconcretos.PuloAlto;
 import com.company.personagens.comportamentos.comportamentosconcretos.PuloBaixo;
+import com.company.personagens.inimigo.Inimigo;
 import com.company.personagens.personagens.*;
 
 public class SimplePersonagemFactory extends Factory {
@@ -33,5 +34,10 @@ public class SimplePersonagemFactory extends Factory {
             p.setPular(new PuloAlto());
         }
         return p;
+    }
+
+    @Override
+    public Inimigo createInimigo(int x, int y) {
+        return null;
     }
 }

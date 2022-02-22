@@ -4,9 +4,6 @@ import com.company.personagens.escudo.Escudos;
 import com.company.personagens.escudo.escudos.Escudo25;
 import com.company.personagens.escudo.escudos.Escudo50;
 import com.company.personagens.inimigo.Inimigo;
-import com.company.personagens.inimigo.Inimigo1;
-import com.company.personagens.inimigo.Inimigo2;
-import com.company.personagens.inimigo.Inimigo3;
 import com.company.personagens.personagens.Personagem;
 
 import javax.swing.*;
@@ -16,6 +13,7 @@ import java.awt.event.KeyListener;
 
 public abstract class Factory extends JPanel {
     public abstract Personagem createPersonagem(int x, int y);
+    public abstract Inimigo createInimigo(int x, int y);
     private Personagem p;
     private Inimigo i1;
     private Inimigo i2;
@@ -70,11 +68,14 @@ public abstract class Factory extends JPanel {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         Factory simple=new SimplePersonagemFactory();
+        Factory inimigosimple=new SimplePersonagemFactoryInimigo();
+
         p = simple.createPersonagem(250,250);
 
-        i1 = new Inimigo1("dudu", 10, 450);
-        i2 = new Inimigo2("tata", 400, 20);
-        i3 = new Inimigo3("vava", 50, 50);
+
+        i1 = inimigosimple.createInimigo( 10, 450);
+        i2 = inimigosimple.createInimigo(400, 20);
+        i3 = inimigosimple.createInimigo(50, 50);
         p.addObserver(i1);
         p.addObserver(i2);
         p.addObserver(i3);
